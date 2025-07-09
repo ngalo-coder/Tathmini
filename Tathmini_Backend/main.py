@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import asyncio
 
 from app.config import settings
-from app.routers import api
+from app.routers import api, odk
+from app.database_mongo import connect_to_mongo, close_mongo_connection
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -22,6 +24,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(api.router, prefix=settings.API_V1_STR)
+app.include_router(odk.router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 async def root():
@@ -30,6 +33,15 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+# MongoDB connection events
+@app.on_event("startup")
+async def startup_db_client():
+    await connect_to_mongo()
+
+@app.on_event("shutdown")
+async def shutdown_db_client():
+    await close_mongo_connection()
 
 if __name__ == "__main__":
     import uvicorn

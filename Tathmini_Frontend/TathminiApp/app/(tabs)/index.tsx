@@ -6,6 +6,7 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { ODKIntegration } from '@/components/ODKIntegration';
 
 export default function HomeScreen() {
   return (
@@ -59,6 +60,14 @@ export default function HomeScreen() {
           </ThemedText>{' '}
           to open developer tools.
         </ThemedText>
+      </ThemedView>
+
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">ODK Integration</ThemedText>
+        <ThemedText>
+          Use the form below to connect to your ODK Central server.
+        </ThemedText>
+        <ODKIntegration projectId="test-project" />
       </ThemedView>
     </ParallaxScrollView>
   );

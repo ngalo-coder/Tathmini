@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface ODKIntegrationFormProps {
   projectId: string; // This is the Tathmini project ID
-  onConnected: () => void;
+  onConnected: (connectedCredentials: ODKCredentials) => void;
 }
 
 type FocusedField = keyof ODKCredentials | null;
@@ -79,7 +79,7 @@ export const ODKIntegrationForm: React.FC<ODKIntegrationFormProps> = ({ projectI
       // The projectId prop is the Tathmini project ID, used in the API call.
       await connectToODK(projectId, credentials);
       Alert.alert('Connection Successful', 'Successfully connected to ODK Central.');
-      onConnected();
+      onConnected(credentials); // Pass the credentials back
     } catch (err) {
       const errorMessage = err instanceof Error ? (err.message || 'Failed to connect. Please check credentials and network.') : 'An unknown error occurred.';
       // Display a general error message for API failures

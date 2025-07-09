@@ -1,0 +1,11 @@
+# Exclude everything outside this directory
+/*
+!/Tathmini_Backend/
+!/Tathmini_Frontend/
+!/README.md
+!/.gitignore
+venvy/
+
+# Specifically exclude external directories like Zotero
+../../../Zotero/
+../../../*/

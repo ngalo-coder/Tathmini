@@ -16,8 +16,7 @@ app.use('/', indexRouter);
 // Start server
 async function start() {
     app.listen(PORT, '0.0.0.0', () => {
-        console.log(`✅ TathminiAI Platform running on port ${PORT}`);
-        console.log(`🌐 Access at: https://tathmini-config-server-production-5a6e.up.railway.app`);
+        console.log(`✅ TathminiAI Platform running on port ${PORT}`);        
         console.log(`📊 Dashboard, Projects, Reports - All in one place!`);
     });
 }

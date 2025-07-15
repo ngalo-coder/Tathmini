@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, Plus, Settings, Database, BarChart3, AlertCircle, CheckCircle, Loader2, Edit2, Trash2, Play } from 'lucide-react';
 
-const API_BASE_URL = 'https://tathmini-config-server-production-5a6e.up.railway.app';
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000'
+// 'https://tathmini-config-server-production-5a6e.up.railway.app';
 
-const TathminiDashboard = () => {
+const App = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [projects, setProjects] = useState([]);
   const [healthStatus, setHealthStatus] = useState(null);
@@ -614,4 +615,4 @@ const TathminiDashboard = () => {
   );
 };
 
-export default TathminiDashboard;
+export default App;

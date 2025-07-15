@@ -14,7 +14,7 @@ router.post('/api/test-connection', odkController.testConnection);
 
 // Project routes
 router.get('/api/projects', projectsController.getProjects);
-router.post('/api/projects', projects.createProject);
+router.post('/api/projects', projectsController.createProject);
 router.patch('/api/projects/:id', projectsController.updateProject);
 router.delete('/api/projects/:id', projectsController.deleteProject);
 router.get('/api/projects/:id/workflow', projectsController.getWorkflow);
